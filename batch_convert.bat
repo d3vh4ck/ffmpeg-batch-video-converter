@@ -15,7 +15,6 @@ set video_params=
 set audio_params=
 
 if not exist %ffmpeg% goto FFMPEG_MISSING
-if not exist %dest_dir% md %dest_dir%
 
 cls
 
@@ -150,14 +149,12 @@ if not "%audio_codec%"=="copy" (
 echo .
 pause
 
-rem if not %video_params%==copy set video_params=
-echo %video_codec%
 if not "%video_codec%"=="copy" set video_params=-vtag hvc1 -pix_fmt yuv420p10le -x265-params lossless=1:profile=main10 -crf %crf% -preset %preset% 
-echo %video_params%
 
-echo %audio_codec%
 if not "%audio_codec%"=="copy" set audio_params=-b:a %audio_bitrate% 
-echo %audio_params%
+
+rem Create the dest_dir if it does not exist
+if not exist %dest_dir% md %dest_dir%
 
 rem Convert videos
 for %%f in (*.%source_extension%) do (
