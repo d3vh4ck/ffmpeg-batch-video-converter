@@ -1,5 +1,5 @@
 @echo off
-rem ffmpeg batch bideo converter 1.0.0
+rem ffmpeg batch bideo converter 0.0.1
 
 set ffmpeg=ffmpeg.exe
 rem loglevel: quiet, panic, fatal, error, warning, info, verbose, debug
